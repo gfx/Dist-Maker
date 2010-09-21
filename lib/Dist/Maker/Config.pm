@@ -127,6 +127,12 @@ sub _merge_hash {
     return;
 }
 
+sub add_user_data {
+    my($config, $data) = @_;
+    _merge_hash($config->user_data, $data);
+    return;
+}
+
 sub add_data {
     my($config, $data) = @_;
     _merge_hash($config->data, $data);

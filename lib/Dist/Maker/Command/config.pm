@@ -32,12 +32,12 @@ sub run {
         print $self->dump_user_data;
     }
     elsif($options->{'import-from-gitconfig'}) {
+        $self->note("Importing config from $ENV{HOME}/.gitconfig\n");
         require Config::Tiny;
         my $gitconfig = Config::Tiny->read("$ENV{HOME}/.gitconfig");
         my $config = $self->config;
         if($gitconfig->{user}) {
-            $config->merge_data($config->user_data->{user} //= {},
-                $gitconfig->{user});
+            $config->add_user_data({ user => $gitconfig->{user} });
         }
         $config->save_data();
     }
