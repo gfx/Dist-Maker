@@ -13,6 +13,8 @@ dim - Distribution Maker
     # set your name and email address first
     dim config user.name 'foo bar'
     dim config user.email 'foo at example.com'
+    # or import user info from $HOME/.gitconfig
+    dim config --import-from-gitconfig
 
     # then make distributions
     dim init Foo::Bar           # creates a distribution
