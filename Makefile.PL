@@ -9,6 +9,7 @@ requires 'Text::Xslate'              => 0.2008;
 requires 'Mouse'                     => 0.64;
 requires 'MouseX::StrictConstructor' => 0.02;
 requires 'MouseX::NativeTraits'      => 0.002;
+requires 'Config::Tiny';
 
 requires 'Module::Install';
 requires 'Module::Install::AuthorTests';
