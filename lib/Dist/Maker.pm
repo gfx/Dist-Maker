@@ -62,7 +62,7 @@ This document describes Dist::Maker version 0.001.
 
 =head1 DESCRIPTION
 
-This is yet another distributin maker.
+This is yet another distribution maker.
 
 This software is an alpha version.
 

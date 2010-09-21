@@ -9,7 +9,6 @@ requires 'Text::Xslate'              => 0.2008;
 requires 'Mouse'                     => 0.64;
 requires 'MouseX::StrictConstructor' => 0.02;
 requires 'MouseX::NativeTraits'      => 0.002;
-requires 'Try::Tiny'                 => 0.06;
 
 requires 'Module::Install';
 requires 'Module::Install::AuthorTests';
@@ -26,6 +25,10 @@ requires 'parent';
 requires 'File::Spec';
 requires 'File::Path';
 requires 'File::Basename';
+
+test_requires 'Moose';
+test_requires 'MooseX::StrictConstructor';
+test_requires 'Any::Moose';
 
 install_script 'dim';
 

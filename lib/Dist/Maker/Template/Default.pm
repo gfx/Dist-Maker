@@ -266,6 +266,7 @@ while(my $line = <DATA>) {
     $line =~ s/ \# [^\n]+ //xms;
     push @stopwords, $line =~ /(\w+)/g;
 }
+add_stopwords(@stopwords);
 
 $ENV{LC_ALL} = 'C';
 all_pod_files_spelling_ok('lib');
@@ -285,6 +286,8 @@ codebase
 committer
 committers
 compat
+cpan
+extention
 datetimes
 dec
 definedness

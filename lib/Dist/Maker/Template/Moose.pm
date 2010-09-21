@@ -12,13 +12,13 @@ sub distribution {
 :# @@ Makefile.PL
 : override mpl_requires -> {
 requires 'Moose'                     => 1.13;
-#requires 'MooseX::StrictConstructor' => 0.02;
+requires 'MooseX::StrictConstructor' => 0.11;
 : }
 
 :# @@ <: $dist.module :>.pm
 : override module_header -> {
 use Moose;
-#use MooseX::StrictConstructor;
+use MooseX::StrictConstructor;
 : }
 
 : override module_code -> {

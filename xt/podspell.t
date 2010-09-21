@@ -16,3 +16,8 @@ __DATA__
 Goro Fuji (gfx)
 gfuji(at)cpan.org
 Dist::Maker
+
+CPAN
+TODO
+extention
+subcommand

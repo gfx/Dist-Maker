@@ -189,7 +189,7 @@ Default to C<3>.
 =head2 user.name
 
 Your name used as the author name.
-Avairable as C<< <: $user.name :> >> in templates.
+Available as C<< <: $user.name :> >> in templates.
 
 =head2 user.email
 

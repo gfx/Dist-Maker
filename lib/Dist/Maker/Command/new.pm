@@ -170,6 +170,6 @@ __END__
 
 =head1 NAME
 
-Dist::Maker::Command::new - Creats a new file
+Dist::Maker::Command::new - Creates a new file
 
 =cut

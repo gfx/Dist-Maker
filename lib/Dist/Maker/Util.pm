@@ -106,6 +106,6 @@ __END__
 
 =head1 NAME
 
-Dist::Maker::Util - Common utlities
+Dist::Maker::Util - Common utilities
 
 =cut
