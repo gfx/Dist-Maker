@@ -335,6 +335,7 @@ reblesses
 refactored
 refactoring
 rethrows
+RT
 runtime
 serializer
 stacktrace
@@ -352,6 +353,7 @@ utils
 whitelist
 Whitelist
 workflow
+XS
 
 versa # vice versa
 ish   # something-ish

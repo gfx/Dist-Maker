@@ -45,8 +45,13 @@ use XSLoader;
 XSLoader::load(__PACKAGE__, $VERSION);
 : }
 
+: override basic_t_tests -> {
+is <: $dist.module :>::hello(), 'Hello, world!';
+: }
+
 : after extra_files -> {
 @@ xs/<: $dist :>.xs
+#define NEED_newSVpvn_flags
 #include "xshelper.h"
 
 #define MY_CXT_KEY "<: $dist.module :>::_guts" XS_VERSION
@@ -80,6 +85,13 @@ CODE:
 }
 
 #endif
+
+void
+hello()
+CODE:
+{
+    ST(0) = newSVpvs_flags("Hello, world!", SVs_TEMP);
+}
 
 @@ t/900_threads.t
 #!perl -w

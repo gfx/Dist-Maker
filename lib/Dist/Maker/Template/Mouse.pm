@@ -13,7 +13,7 @@ sub distribution {
 : override mpl_requires -> {
 requires 'Mouse'                     => 0.70;
 requires 'MouseX::StrictConstructor' => 0.02;
-requires 'MouseX::NativeTraits'      => 0.02;
+requires 'MouseX::NativeTraits'      => 0.002;
 : }
 
 :# @@ <: $dist.module :>.pm
