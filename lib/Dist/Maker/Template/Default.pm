@@ -12,10 +12,29 @@ sub distribution {
 
 use strict;
 use warnings;
+BEGIN {
+    unshift @INC, 'inc';
+
+    # author requires, or bundled modules
+    my @devmods = qw(
+        inc::Module::Install             1.00
+        Module::Install::AuthorTests     0.002
+        Module::Install::Repository      0.06
+        Test::Requires                   0.06
+: block author_requires -> { }
+    );
+    my @not_available;
+    while(my($mod, $ver) = splice @devmods, 0, 2) {
+        eval qq{use $mod $ver (); 1} or push @not_available, $mod;
+    }
+    if(@not_available) {
+        print qq{# The following modules are not available.\n};
+        print qq{# `perl $0 | cpanm` will install them:\n};
+        print $_, "\n" for @not_available;
+        exit 1;
+     }
+}
 use inc::Module::Install;
-use Module::Install::AuthorTests;
-use Module::Install::Repository;
-: block mpl_plugin -> { }
 
 all_from 'lib/<: $dist.path :>.pm';
 
@@ -108,8 +127,8 @@ Makefile*
 !Makefile.PL
 *blib
 META.yml
+MYMETA.yml
 inc/
-MANIFEST
 *.out
 *.bak
 *.old
@@ -138,6 +157,7 @@ CheckChangeLog.files = Changes
 \.bs$
 \.o(?:|bj|ld|ut)$
 nytprof
+MYMETA\.yml$
 
 : block manifest_skip { }
 @@ lib/<: $dist.path :>.pm

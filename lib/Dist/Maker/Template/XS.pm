@@ -11,8 +11,8 @@ sub distribution {
 
 :# @@ Makefile.PL
 
-: after mpl_plugin -> {
-use Module::Install::XSUtil 0.32;
+: after author_requires -> {
+        Module::Install::XSUtil 0.32
 : }
 
 : after mpl_command {
