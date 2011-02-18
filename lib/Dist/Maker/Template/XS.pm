@@ -18,7 +18,7 @@ sub distribution {
 : after mpl_command {
 use_xshelper;
 cc_warnings;
-cc_src_paths 'xs';
+cc_src_paths 'src';
 : }
 
 :# @@ author/requires.cpanm
@@ -33,11 +33,11 @@ Test::Valgrind
 
 :# @@ .gitignore
 : after gitignore {
-xs/*.c
+src/*.c
 : }
 :# @@ MANIFEST.SKIP
 : after manifest_skip {
-xs/.*\.c$
+src/.*\.c$
 : }
 :# @@ lib/$dist.module_path
 : after module_code -> {
@@ -50,7 +50,7 @@ is <: $dist.module :>::hello(), 'Hello, world!';
 : }
 
 : after extra_files -> {
-@@ xs/<: $dist :>.xs
+@@ src/<: $dist :>.xs
 #define NEED_newSVpvn_flags
 #include "xshelper.h"
 
