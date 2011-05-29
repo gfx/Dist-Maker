@@ -30,6 +30,8 @@ requires 'File::Basename';
 test_requires 'Moose';
 test_requires 'MooseX::StrictConstructor';
 test_requires 'Any::Moose';
+test_requires 'Test::Pod::Coverage';
+test_requires 'Test::Perl::Critic';
 
 install_script 'dim';
 

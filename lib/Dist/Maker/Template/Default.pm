@@ -195,6 +195,10 @@ This document describes <: $dist.module :> version <: $module.initial_version :>
 
 =head1 INTERFACE
 
+=head2 Functions
+
+=head3 C<< hello() >>
+
 # TODO
 
 =head1 DEPENDENCIES
@@ -209,7 +213,7 @@ to cpan-RT.
 
 =head1 SEE ALSO
 
-L<Dist::Maker::Template::<: $template.name :>>
+L<perl>
 
 =head1 AUTHOR
 
