@@ -132,6 +132,8 @@ inc/
 *.out
 *.bak
 *.old
+*~
+*.swp
 ppport.h
 nytprof*
 cover_db*
