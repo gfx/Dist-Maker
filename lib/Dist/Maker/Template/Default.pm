@@ -44,7 +44,8 @@ all_from 'lib/<: $dist.path :>.pm';
 : block mpl_configure_requires -> { }
 : block mpl_build_requires     -> { }
 : block mpl_test_requires      -> {
-test_requires 'Test::More' => '0.88';
+test_requires 'Test::More'     => '0.88';
+test_requires 'Test::Requires' => '0.06';
 : }
 
 : block mpl_meta -> {
@@ -283,8 +284,8 @@ all_pod_coverage_ok({
 use strict;
 use Test::More;
 
-eval q{ use Test::Spelling; system("which", "spell") == 0 or die };
-plan skip_all => q{Test::Spelling or spell(1) is not available.}
+eval q{ use Test::Spelling };
+plan skip_all => q{Test::Spelling is not available.}
     if $@;
 
 my @stopwords;
@@ -380,6 +381,8 @@ whitelist
 Whitelist
 workflow
 XS
+MacOS
+MacOSX
 
 versa # vice versa
 ish   # something-ish
