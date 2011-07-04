@@ -21,7 +21,7 @@ has data => (
             },
             module => {
                 initial_version => '0.01',
-                
+
             },
             template => {
                 default => 'Default',
@@ -164,6 +164,8 @@ sub save_data {
     my($config, $file, $data) = @_;
     $data //= $config->user_data;
     $file //= $config->config_file;
+
+    mkdir $config->home_dir if not -e $config->home_dir;
 
     my $header = "# This file is managed by $0.\n";
     $config->save( $file => $header . $config->dump_data($data) )
