@@ -165,7 +165,11 @@ sub save_data {
     $data //= $config->user_data;
     $file //= $config->config_file;
 
-    mkdir $config->home_dir if not -e $config->home_dir;
+    my $home = $config->home_dir();
+    if(not -e $home) {
+        mkdir $home       or warn "Cannot mkdir $home: $!";
+        chmod 0700, $home or warn "Cannot chmod $home: $!";
+    }
 
     my $header = "# This file is managed by $0.\n";
     $config->save( $file => $header . $config->dump_data($data) )
