@@ -6,6 +6,7 @@ use Dist::Maker::Util qw(save);
 
 # data = default config + user's config (from file) + application data
 
+use File::Basename ();
 use File::Spec;
 
 has data => (
@@ -15,7 +16,7 @@ has data => (
     default => sub {
         my($config) = @_;
         my $data = {
-            software => $0,
+            software => File::Basename::basename($0),
             core => {
                 verbose  => 0,
             },

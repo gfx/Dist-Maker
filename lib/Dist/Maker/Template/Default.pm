@@ -110,7 +110,7 @@ LICENSE AND COPYRIGHT
 
 Revision history for Perl extension <: $dist.module :>
 
-<: $module.initial_version :> <<SET RELEASE DATE HERE>>
+NEXT <<SET RELEASE DATE HERE>>
     - original version; created by <: $software // 'Dist::Maker' :>
       at <: localtime() :>.
 
