@@ -127,9 +127,8 @@ NEXT <<SET RELEASE DATE HERE>>
 Makefile*
 !Makefile.PL
 *blib
-META.yml
-MYMETA.yml
-inc/
+META.(?:yml|json)
+MYMETA.(?:yml|json)
 *.out
 *.bak
 *.old
