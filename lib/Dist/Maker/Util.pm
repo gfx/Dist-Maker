@@ -8,6 +8,7 @@ our @EXPORT = qw(
     parse_options
     p
 
+    run_command
     mkpath
     rmtree
     usage
@@ -55,6 +56,41 @@ sub parse_options {
 sub p {
     require Text::Xslate::Util;
     goto &Text::Xslate::Util::p;
+}
+
+sub run_command {
+    my($logger, @command) = @_;
+
+    require IPC::Open3;
+
+    if(@command > 1 && $command[0] !~ /\s/) {
+        my($name, @args) = @command;
+        require File::Basename;
+        $logger->note(join(' ',
+            File::Basename::basename($name), @args), "\n");
+    }
+    else {
+        $logger->note("@command\n");
+    }
+    local(*CIN, *COUT, *CERR);
+    my $pid = IPC::Open3::open3(\*CIN, \*COUT, \*CERR, @command);
+
+    close *CIN;
+    local $/;
+
+    my $stdout = <COUT>;
+    my $stderr = <CERR>;
+
+    waitpid $pid, 0;
+
+    $logger->info($stdout) if $stdout;
+    if($? == 0) {
+        $logger->info($stderr);
+    }
+    else {
+        $logger->diag($stderr);
+    }
+    return($stdout, $stderr);
 }
 
 sub mkpath {

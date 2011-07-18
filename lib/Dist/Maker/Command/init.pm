@@ -14,6 +14,7 @@ sub option_spec {
     return(
         'dry-run|n',
         'force|f',
+        'no-dist-init',
     );
 }
 
@@ -59,10 +60,15 @@ sub run {
         my %meta = (
             template => $template,
             dist     => $distname,
+            distdir  => $distdir,
+            module   => $dist->module,
         );
         $self->config->save_data("$distdir/.dim.pl" => \%meta);
-        # TODO: initialize repository
-        # TODO: setting repository data (github?)
+
+        if(!$options->{'no-dist-init'}) {
+            my $t = "Dist::Maker::Template::$template";
+            $t->new(config => $self->config)->dist_init(\%meta);
+        }
     }
     else {
         $self->info($_, "\n") for sort keys %{ $dms->content_map };

@@ -3,9 +3,24 @@ use utf8;
 use Mouse;
 use MouseX::StrictConstructor;
 
+use Dist::Maker::Util qw(run_command);
+
 extends 'Dist::Maker::Base';
 with    'Dist::Maker::Template';
 
+sub dist_init {
+    my($self, $meta) = @_;
+    chdir $meta->{distdir} or return;
+
+    eval {
+        $self->run_command($^X, 'Makefile.PL');
+        $self->run_command($^X, '-MExtUtils::Manifest=mkmanifest',
+            '-e', 'mkmanifest');
+    };
+    chdir '..';
+    die $@ if $@;
+    return;
+}
 
 sub distribution {
     return <<'DIST';
