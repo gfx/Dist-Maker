@@ -10,7 +10,7 @@ with    'Dist::Maker::Template';
 sub distribution {
     return <<'DIST';
 @@ Makefile.PL
-
+#!perl
 use strict;
 use warnings;
 BEGIN {
@@ -190,7 +190,9 @@ This document describes <: $dist.module :> version <: $module.initial_version :>
 
 =head1 SYNOPSIS
 
+: block synopsis {
     use <: $dist.module :>;
+: }
 
 =head1 DESCRIPTION
 
@@ -269,16 +271,7 @@ plan skip_all => 'Test::Pod 1.14 required for testing POD'
     if $@;
 
 all_pod_files_ok();
-@@ xt/podcoverage.t
-#!perl -w
-use Test::More;
-eval q{use Test::Pod::Coverage 1.04};
-plan skip_all => 'Test::Pod::Coverage 1.04 required for testing POD coverage'
-    if $@;
 
-all_pod_coverage_ok({
-    also_private => [qw(unimport BUILD DEMOLISH init_meta)],
-});
 @@ xt/podspell.t
 #!perl -w
 use strict;
@@ -383,12 +376,29 @@ workflow
 XS
 MacOS
 MacOSX
+CLI
+HTTP
 
 versa # vice versa
 ish   # something-ish
 ness  # something-ness
 pre   # pre-something
 maint # co-maint
+
+: block podcoverage_t {
+@@ xt/podcoverage.t
+#!perl -w
+use Test::More;
+eval q{use Test::Pod::Coverage 1.04};
+plan skip_all => 'Test::Pod::Coverage 1.04 required for testing POD coverage'
+    if $@;
+
+all_pod_coverage_ok({
+    also_private => [qw(unimport BUILD DEMOLISH init_meta)],
+});
+: } # podcoverage_t
+
+: block podsynopsis_t {
 @@ xt/podsynopsis.t
 #!perl -w
 use strict;
@@ -397,6 +407,9 @@ eval q{use Test::Synopsis};
 plan skip_all => 'Test::Synopsis required for testing SYNOPSIS'
     if $@;
 all_synopsis_ok();
+: } # podsynopsis_t
+
+: block perlcritic_t {
 @@ xt/perlcritic.t
 use strict;
 use Test::More;
@@ -424,6 +437,7 @@ equivalent_modules = <: $mooselike.join(" ") :>
 
 [TestingAndDebugging::RequireUseWarnings]
 equivalent_modules = <: $mooselike.join(" ") :>
+: } # perlcritic_t
 
 @@ author/requires.cpanm
 # for <: $dist :>

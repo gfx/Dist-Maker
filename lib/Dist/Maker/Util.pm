@@ -114,7 +114,7 @@ sub available_templates {
 
         my $wanted = sub {
             return if !(-f $_ && -r _);
-            if(/Dist.Maker.Template.( .+ )\.pm  /xms) {
+            if(/ Dist.Maker.Template.( .+ )\.pm  \z/xms) {
                 my $name = $1;
                 $name =~ s/\W/::/g;
                 $modules{$name}++;
@@ -125,7 +125,7 @@ sub available_templates {
             { wanted => $wanted, no_chdir => 1 }, $base
         );
     }
-    return sort keys %modules;
+    return sort keys %modules; ## no critic
 }
 
 1;

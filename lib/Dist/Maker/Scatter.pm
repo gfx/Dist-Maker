@@ -157,7 +157,7 @@ sub scatter {
         }
 
         $self->info("$file\n");
-        open my $out, '>:utf8 :raw', $fullpath
+        open my $out, '>:utf8 :raw', $fullpath ## no critic
             or die("Cannot open($fullpath) for writing: $!");
         print $out $map->{$file};
         close $out or die("Cannot close($fullpath) in writing: $!");

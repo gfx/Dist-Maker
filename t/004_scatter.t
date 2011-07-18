@@ -19,12 +19,28 @@ my $config = Dist::Maker::Config->new(
 );
 
 my @files = qw(
-    Makefile.PL lib/Foo/Bar.pm
-    README Changes author/requires.cpanm
-    .gitignore .shipit MANIFEST.SKIP
-    t/000_load.t t/001_basic.t
-    xt/pod.t xt/podcoverage.t xt/podspell.t xt/podsynopsis.t
+    Makefile.PL
+    lib/Foo/Bar.pm
+    README
+    Changes
+    author/requires.cpanm
+    .gitignore
+    .shipit
+    MANIFEST.SKIP
+    t/000_load.t
+    t/001_basic.t
+    xt/pod.t
+    xt/podcoverage.t
+    xt/podspell.t
+    xt/podsynopsis.t
     xt/perlcritic.t
+);
+
+my %shouldnt_exist = (
+    'CLI' => {
+        'xt/podcoverage.t' => 1,
+        'xt/podsynopsis.t' => 1,
+    },
 );
 
 foreach my $template(available_templates()) {
@@ -41,8 +57,13 @@ foreach my $template(available_templates()) {
     ok $map, 'content_map';
 
     foreach my $file(@files) {
-        ok exists $map->{$file}, "$file built successfully";
-        cmp_ok length($map->{$file}), '>', 0, '... with some contents';
+        if(!$shouldnt_exist{$template}{$file}) {
+            ok exists $map->{$file}, "$file built successfully";
+            cmp_ok length($map->{$file}), '>', 0, '... with some contents';
+        }
+        else {
+            ok !exists $map->{$file}, "$file should not exist";
+        }
     }
 
     like $map->{README}, qr/Foo::Bar/;
@@ -62,6 +83,8 @@ foreach my $template(available_templates()) {
     $x->scatter($d);
 
     foreach my $file(@files) {
+        next if $shouldnt_exist{$template}{$file};
+
         ok -e File::Spec->catfile($d, $file),
             "$file exists in the file system";
     }

@@ -42,7 +42,7 @@ sub run {
             $self->rmtree($distdir);
         }
         else {
-            $self->diag("$cmd: $distdir already exists. Finished.\n");
+            $self->diag("$distdir already exists. Finished.\n");
             return undef;
         }
     }
@@ -68,7 +68,7 @@ sub run {
         $self->info($_, "\n") for sort keys %{ $dms->content_map };
     }
 
-    $self->note("$cmd finished.\n");
+    $self->note("finished.\n");
     return 1;
 }
 

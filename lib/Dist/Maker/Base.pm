@@ -1,6 +1,7 @@
 package Dist::Maker::Base;
-
 use Mouse;
+
+use Dist::Maker::Config;
 
 with 'Dist::Maker::Logger';
 

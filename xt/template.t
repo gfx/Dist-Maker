@@ -8,8 +8,7 @@ use File::Path qw(rmtree);
 use Cwd qw(getcwd);
 
 my @templates = @ARGV;
-@templates = available_templates();
-    unless @templates;
+@templates = available_templates() unless @templates;
 
 if($ENV{PERL5LIB}) {
     $ENV{PERL5LIB} .= ":" . join ":", @INC;

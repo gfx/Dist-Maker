@@ -51,7 +51,7 @@ has name => (
     lazy => 1,
     default => sub {
         my($self) = @_;
-        return $self->join( $self->dist_name_separator );
+        return $self->join_with( $self->dist_name_separator );
     },
 );
 
@@ -61,7 +61,7 @@ has path => (
     lazy => 1,
     default => sub {
         my($self) = @_;
-        return $self->join( $self->path_separator );
+        return $self->join_with( $self->path_separator );
     },
 );
 
@@ -71,13 +71,19 @@ has module => (
     lazy => 1,
     default => sub {
         my($self) = @_;
-        return $self->join( $self->module_name_separator );
+        return $self->join_with( $self->module_name_separator );
     },
 );
 
-sub join {
+sub join_with {
     my($self, $separator) = @_;
     return join($separator, $self->parts);
+}
+
+# inspired by UNIVERSAL::moniker
+sub moniker {
+    my($self) = @_;
+    return $self->parts->[-1];
 }
 
 no Mouse::Util::TypeConstraints;
