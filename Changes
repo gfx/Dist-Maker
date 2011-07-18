@@ -1,4 +1,7 @@
 Revision history for Perl extension Dist::Maker
 
+0.01_01 2011-07-18 14:37:30
+    - Initial CPAN version
+
 0.001 Mon Mar 15 22:55:27 2010
     - original version; created by Module::Setup

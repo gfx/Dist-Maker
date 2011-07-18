@@ -3,7 +3,7 @@ use 5.10.0;
 use strict;
 use warnings;
 
-our $VERSION = '0.001';
+our $VERSION = '0.01_01';
 
 use Dist::Maker::Config;
 use Dist::Maker::Util qw(parse_options);
@@ -51,7 +51,7 @@ Dist::Maker - Yet another distribution maker
 
 =head1 VERSION
 
-This document describes Dist::Maker version 0.001.
+This document describes Dist::Maker version 0.01_01.
 
 =head1 SYNOPSIS
 
@@ -64,7 +64,7 @@ This document describes Dist::Maker version 0.001.
 
 This is yet another distribution maker.
 
-This software is an alpha version.
+This software is an B<aplha> version. Any API will change without notice.
 
 =head1 DEPENDENCIES
 
