@@ -27,12 +27,12 @@ sub run {
         return undef;
     }
 
-    my $cmd = ref($self);
-
     $template //= 'Default';
 
     my $config_data = $self->config_data;
     $self->note("running with $distname $template ...\n");
+
+    $options->{'no-dist-init'} //= !$config_data->{template}{dist_init};
 
     my $dist    = Dist::Maker::Name->new($distname);
     my $distdir = $dist->name;

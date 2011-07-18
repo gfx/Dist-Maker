@@ -27,8 +27,9 @@ has data => (
 
             },
             template => {
-                default => 'Default',
-                module  => [qw(Time::Piece)],
+                default   => 'Default',
+                module    => [qw(Time::Piece)],
+                dist_init => 1,
             },
             user     => {
                 name  => '<<YOUR NAME HERE>>',
@@ -216,6 +217,11 @@ Default to C<Default>.
 
 Modules used in templates, i.e. C<< Text::Xslate->new( module => $module ) >>.
 Default to C<< ['Time::Piece'] >>.
+
+=head2 template.dist_init
+
+If true (default), C<< dim init >> will does extra things, e.g.
+C<< perl Makefile.PL && make manifest >> by the Default template.
 
 =head2 pause.user
 
