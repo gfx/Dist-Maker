@@ -28,7 +28,6 @@ sub getopt_spec {
     return(
         'version',
         'help',
-        'foo|f=s',
     );
 }
 
@@ -92,9 +91,11 @@ sub dispatch {
 sub dump {
     my($self) = @_;
     require Data::Dumper;
-    my $dd = Data::Dumper->new();
+    my $dd = Data::Dumper->new([$self], ['app']);
     $dd->Indent(1);
     $dd->Maxdepth(3);
+    $dd->Quotekeys(0);
+    $dd->Sortkeys(1);
     return $dd->Dump();
 }
 

@@ -78,6 +78,8 @@ to cpan-RT.
 
 =head1 SEE ALSO
 
+L<Dist::Maker::Config> for configuration variables
+
 L<Text::Xslate> to extend templates
 
 =head1 AUTHOR

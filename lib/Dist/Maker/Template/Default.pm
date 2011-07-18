@@ -76,7 +76,11 @@ This is Perl module <: $dist.module :>.
 
 INSTALLATION
 
-Install cpanm (App::cpanminus) and then run the following command to install
+Type the following command:
+
+    $ curl -L http://cpanmin.us | perl - <: $dist.module :>
+
+Or install cpanm and then run the following command to install
 <: $dist.module :>:
 
     $ cpanm <: $dist.module :>

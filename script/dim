@@ -17,11 +17,14 @@ dim - Distribution Maker
     dim config --import-from-gitconfig
 
     # then make distributions
-    dim init Foo::Bar           # creates a distribution
-    # dim init Foo::Bar Default # ditto
-    # dim init Foo::Bar::XS XS  # using D::M::Template::XS
+    dim init Foo::Bar             # creates a distribution
+    dim init Foo::Bar Default     # ditto
+    dim init Foo::Bar::XS XS      # using D::M::Template::XS
+    dim --verbose=4 init Foo::Bar # with verbosity
+    dim init --force Foo::Bar     # do `rm -rf Foo-Bar` before init
+    dim init --dry-run Foo::Bar   # don't actially init the dist
 
-    # do something important
+    # cd and do something important
     cd Foo-Bar/
 
     # add new files
