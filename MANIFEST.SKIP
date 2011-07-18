@@ -41,3 +41,5 @@
 # skip author's files
 \bauthor\b
 
+MYMETA\.(?:json|yml)$
+
