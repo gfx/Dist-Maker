@@ -35,8 +35,6 @@ sub run {
         return undef;
     }
 
-    my $cmd = ref($self);
-
     if($filename =~ /::/) {
         $filename  =~ s{::}{/}g;
         $filename .= ".pm";
@@ -46,7 +44,7 @@ sub run {
     $template //= $meta->{template};
 
     my $dist = Dist::Maker::Name->new($meta->{dist});
-    $self->note("$cmd running with $filename $template in $dist\n");
+    $self->note("running with $filename $template in $dist\n");
 
     my($suffix) = ($filename =~ / (\.[^.]+) \z/xms);
     if(!defined $suffix) {
@@ -129,7 +127,7 @@ sub run {
         $dms->scatter('.', { $filename => $content });
     }
 
-    $self->note("$cmd finished.\n");
+    $self->note("finished.\n");
     return 1;
 }
 
