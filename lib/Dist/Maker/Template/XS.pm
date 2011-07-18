@@ -1,4 +1,5 @@
 package Dist::Maker::Template::XS;
+use utf8;
 use Mouse;
 use MouseX::StrictConstructor;
 
