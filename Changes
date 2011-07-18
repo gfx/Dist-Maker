@@ -1,5 +1,8 @@
 Revision history for Perl extension Dist::Maker
 
+0.01_03 2011-07-18 17:59:49
+    - Config template.dist_init to control dist_init
+
 0.01_02 2011-07-18 15:13:58
     - Initialize the dist with `perl Makefile.PL && make manifest`
 
