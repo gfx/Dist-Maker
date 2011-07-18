@@ -97,6 +97,17 @@ __END__
 
 =head1 NAME
 
-Dist::Maker::Command::meta - Manages config data
+Dist::Maker::Command::config - Manages config data
+
+=head1 SYNOPSIS
+
+    $ dim config --dump # or -l
+
+    # import user.name and user.email from ~/.gitconfig
+    $ dim config --import-from-gitconfig
+
+    # set config variables
+    $ dim config user.name  A.U.Thor
+    $ dim config user.email author@cpan.org
 
 =cut

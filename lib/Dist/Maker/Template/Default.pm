@@ -23,6 +23,8 @@ sub dist_init {
 }
 
 sub distribution {
+    # empty expression <: :> is used
+    # in order to avoid to confuse PAUSE indexers
     return <<'DIST';
 @@ Makefile.PL
 #!perl
@@ -190,7 +192,7 @@ use strict;
 use warnings;
 : }
 
-our $VERSION = '<: $module.initial_version :>';
+our $<: :>VERSION = '<: $module.initial_version :>';
 
 : block module_code -> { }
 
@@ -199,7 +201,7 @@ our $VERSION = '<: $module.initial_version :>';
 : }
 __END__
 
-=head1 NAME
+<: :>=head1 NAME"
 
 <: $dist.module :> - Perl extention to do something
 

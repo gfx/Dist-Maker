@@ -42,4 +42,10 @@ __END__
 
 Dist::Maker::Command::meta - Meta commands
 
+=head1 DESCRIPTION
+
+The C<meta> command is commands for C<dim> itself.
+That is, C<--help>, C<--usage> and C<--version> for C<dim>
+is handled by this module.
+
 =cut
