@@ -24,4 +24,5 @@ subcommand
 RT
 XS
 CLI
+API
 

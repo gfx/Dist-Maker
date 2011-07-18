@@ -64,7 +64,7 @@ This document describes Dist::Maker version 0.01_02.
 
 This is yet another distribution maker.
 
-This software is an B<aplha> version. Any API will change without notice.
+This software is an B<alpha> version. Any API will change without notice.
 
 =head1 DEPENDENCIES
 
