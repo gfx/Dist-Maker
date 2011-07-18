@@ -90,7 +90,7 @@ sub _load_dist_template {
         my $t       = $c->new();
         my $moniker = $t->moniker;
 
-        $self->info("Loading $c as $moniker.\n");
+        $self->info("loading $c as $moniker.\n");
 
         $vpath->{$moniker} = $t->distribution;
 
@@ -107,7 +107,7 @@ sub _build_content_map {
 
     my $name = $self->template->name;
 
-    $self->info("Build distribution with $name\n");
+    $self->info("build distribution with $name\n");
 
     my $mtime = $self->_load_dist_template($name);
     local $^T = $mtime; # XXX: hack to fool Xslate
@@ -147,7 +147,7 @@ sub scatter {
     my($self, $to, $map) = @_;
     $map //= $self->content_map();
 
-    $self->info("Scatter to $to/\n");
+    $self->info("scatter to $to/\n");
     foreach my $file(sort keys %{$map}) {
         my $fullpath      = File::Spec->catfile($to, $file);
         my($volume, $dir) = File::Spec->splitpath($fullpath);
@@ -162,7 +162,7 @@ sub scatter {
         print $out $map->{$file};
         close $out or die("Cannot close($fullpath) in writing: $!");
     }
-    $self->info("Scattered successfully.\n");
+    $self->info("scattered successfully.\n");
     return;
 }
 

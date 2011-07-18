@@ -109,7 +109,7 @@ sub run {
         }
     }
 
-    $self->note("Create $filename from $prototype\n");
+    $self->note("create $filename from $prototype\n");
     if(-e $filename && !$options->{force}) {
         $self->diag("$filename already exists. Finished.\n");
         return undef;
