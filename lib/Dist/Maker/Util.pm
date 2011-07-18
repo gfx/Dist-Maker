@@ -13,6 +13,8 @@ our @EXPORT = qw(
     usage
 
     save
+
+    available_templates
 );
 
 sub slurp {
@@ -57,7 +59,7 @@ sub p {
 
 sub mkpath {
     my($logger, @args) = @_;
-    $logger->log("mkpath @args\n");
+    $logger->info("mkpath @args\n");
     require File::Path;
     File::Path::mkpath(\@args, $logger->verbose >= 5)
         or Carp::croak("Cannot mkpath(@args): $!");
@@ -65,7 +67,7 @@ sub mkpath {
 
 sub rmtree {
     my($logger, @args) = @_;
-   $logger->log("mktree @args\n");
+   $logger->info("mktree @args\n");
     require File::Path;
     File::Path::rmtree(\@args, $logger->verbose >= 5);
 }
@@ -99,6 +101,31 @@ sub usage {
     require Pod::Usage;
     Pod::Usage::pod2usage(@_);
     return 1;
+}
+
+sub available_templates {
+    require File::Find;
+
+    my %modules;
+    foreach my $dir(@INC) {
+        my $base = "$dir/Dist/Maker/Template";
+
+        next if not -d $base;
+
+        my $wanted = sub {
+            return if !(-f $_ && -r _);
+            if(/Dist.Maker.Template.( .+ )\.pm  /xms) {
+                my $name = $1;
+                $name =~ s/\W/::/g;
+                $modules{$name}++;
+            }
+        };
+
+        File::Find::find(
+            { wanted => $wanted, no_chdir => 1 }, $base
+        );
+    }
+    return sort keys %modules;
 }
 
 1;

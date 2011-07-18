@@ -9,6 +9,8 @@ use Dist::Maker::Util qw(save);
 use File::Basename ();
 use File::Spec;
 
+with 'Dist::Maker::Logger';
+
 has data => (
     is      => 'ro',
     isa     => 'HashRef',
@@ -178,10 +180,6 @@ sub save_data {
     chmod 0600, $file;
 }
 
-sub diag {
-    shift;
-    print STDERR "!! ", @_;
-}
 
 no Mouse;
 __PACKAGE__->meta->make_immutable();

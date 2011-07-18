@@ -78,7 +78,7 @@ sub user_field {
         }
         else {
             if(@values) {
-                $self->log("Setting $field ",
+                $self->info("Setting $field ",
                     (@values == 1 ? $values[0] : "[@values]"), "\n");
                 $data->{$p} = @values == 1 ? $values[0] : \@values;
                 return;

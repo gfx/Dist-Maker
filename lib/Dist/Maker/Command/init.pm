@@ -31,17 +31,18 @@ sub run {
     $template //= 'Default';
 
     my $config_data = $self->config_data;
-    $self->note("$cmd running with $distname $template ...\n");
+    $self->note("running with $distname $template ...\n");
 
     my $dist    = Dist::Maker::Name->new($distname);
     my $distdir = $dist->name;
 
     if(-e $distdir) {
         if($options->{force}) {
+            $self->info("rmtree $distdir\n");
             $self->rmtree($distdir);
         }
         else {
-            $self->diag("$distdir already exists. Finished.\n");
+            $self->diag("$cmd: $distdir already exists. Finished.\n");
             return undef;
         }
     }
@@ -64,7 +65,7 @@ sub run {
         # TODO: setting repository data (github?)
     }
     else {
-        $self->log($_, "\n") for sort keys %{ $dms->content_map };
+        $self->info($_, "\n") for sort keys %{ $dms->content_map };
     }
 
     $self->note("$cmd finished.\n");

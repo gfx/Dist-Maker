@@ -4,7 +4,7 @@ use Test::More;
 
 use Dist::Maker::Config;
 use Dist::Maker::Scatter;
-use Dist::Maker::Util qw(slurp);
+use Dist::Maker::Util qw(slurp available_templates);
 use File::Path qw(rmtree);
 
 END{ rmtree '.test/scatter/', { verbose => 0 } }
@@ -27,7 +27,7 @@ my @files = qw(
     xt/perlcritic.t
 );
 
-foreach my $template(qw(Default XS Moose Mouse Any::Moose)) {
+foreach my $template(available_templates()) {
     note "Template: $template";
 
     my $x = Dist::Maker::Scatter->new(

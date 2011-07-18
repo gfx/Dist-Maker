@@ -76,7 +76,7 @@ sub run {
         return undef;
     }
     elsif(@candidates > 1) {
-        $self->log("Candidates: @candidates\n");
+        $self->info("Candidates: @candidates\n");
 
         # heulistic methods
 
@@ -139,7 +139,7 @@ sub get_meta {
     my $dir  = $cwd;
     while(1) {
         if(-e "$dir/.dim.pl") {
-            $self->log("Readng '$dir/.dim.pl'\n");
+            $self->info("Readng '$dir/.dim.pl'\n");
             my $data = do "$dir/.dim.pl";
             if($data) {
                 return $data;

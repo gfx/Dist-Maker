@@ -3,11 +3,12 @@ use strict;
 use Test::More;
 
 use Dist::Maker::Scatter;
+use Dist::Maker::Util qw(available_templates);
 use File::Path qw(rmtree);
 use Cwd qw(getcwd);
 
 my @templates = @ARGV;
-@templates = qw(Default XS Moose Mouse Any::Moose)
+@templates = available_templates();
     unless @templates;
 
 if($ENV{PERL5LIB}) {
