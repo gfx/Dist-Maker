@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 use inc::Module::Install;
+use Module::Install::Repository;
+use Module::Install::AuthorTests;
 
 all_from 'lib/Dist/Maker.pm';
 
@@ -38,7 +40,7 @@ install_script 'dim';
 tests_recursive;
 author_tests 'xt';
 
-#auto_set_repository() if -d '.git';
+auto_set_repository() if -d '.git';
 
 clean_files qw(
     Dist-Maker-* *.stackdump

@@ -1,5 +1,8 @@
 Revision history for Perl extension Dist::Maker
 
+0.02 2011-07-24 13:52:29
+    - No code changes from 0.01_03
+
 0.01_03 2011-07-18 17:59:49
     - Config template.dist_init to control dist_init
 
