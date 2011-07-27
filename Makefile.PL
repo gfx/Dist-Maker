@@ -40,7 +40,7 @@ install_script 'dim';
 tests_recursive;
 author_tests 'xt';
 
-auto_set_repository() if -d '.git';
+auto_set_repository;
 
 clean_files qw(
     Dist-Maker-* *.stackdump
