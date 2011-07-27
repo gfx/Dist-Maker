@@ -1,5 +1,8 @@
 Revision history for Perl extension Dist::Maker
 
+0.03 2011-07-27 10:38:48
+    - Re-packaging for missing M::I::Repository
+
 0.02 2011-07-24 13:52:29
     - No code changes from 0.01_03
 
