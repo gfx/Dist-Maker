@@ -84,14 +84,14 @@ sub run {
 
 sub dispatch {
     my($self, @args) = @_;
-    print $self->dump();
+    print Dump($self);
     return;
 }
 
-sub dump {
-    my($self) = @_;
+sub Dump {
+    my($data, $name) = @_;
     require Data::Dumper;
-    my $dd = Data::Dumper->new([$self], ['app']);
+    my $dd = Data::Dumper->new([$data], [$name || 'app']);
     $dd->Indent(1);
     $dd->Maxdepth(3);
     $dd->Quotekeys(0);
