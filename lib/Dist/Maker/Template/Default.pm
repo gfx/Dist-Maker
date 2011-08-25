@@ -201,7 +201,7 @@ our $<: :>VERSION = '<: $module.initial_version :>';
 : }
 __END__
 
-<: :>=head1 NAME"
+<: :>=head1 NAME
 
 <: $dist.module :> - Perl extention to do something
 
