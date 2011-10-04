@@ -142,6 +142,7 @@ NEXT <<SET RELEASE DATE HERE>>
 !.gitignore
 !.shipit
 !.dim.pl
+inc/
 *.o
 *.obj
 *.bs
