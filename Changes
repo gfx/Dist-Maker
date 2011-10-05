@@ -1,5 +1,9 @@
 Revision history for Perl extension Dist::Maker
 
+0.05 2011-10-05 10:21:06
+    - Add inc/ to default .gitignore
+    - Requires Module::Install::XSUtil 0.41 in XS flavor
+
 0.04 2011-08-25 16:28:38
     - Fix typo in the pod template
 
