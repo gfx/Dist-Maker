@@ -13,7 +13,7 @@ sub distribution {
 :# @@ Makefile.PL
 
 : after author_requires -> {
-        Module::Install::XSUtil 0.32
+        Module::Install::XSUtil 0.41
 : }
 
 : after mpl_command {
