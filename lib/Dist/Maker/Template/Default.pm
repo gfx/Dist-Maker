@@ -139,9 +139,9 @@ NEXT <<SET RELEASE DATE HERE>>
 @@ .gitignore
 <: $dist :>-*
 .*
-!.gitignore
+!.git*
 !.shipit
-!.dim.pl
+!.dimconfig
 inc/
 *.o
 *.obj
@@ -150,7 +150,6 @@ inc/
 Makefile*
 !Makefile.PL
 *blib
-META.*
 MYMETA.*
 *.out
 *.bak
@@ -181,8 +180,8 @@ CheckChangeLog.files = Changes
 
 \.bs$
 \.o(?:|bj|ld|ut)$
-nytprof
-MYMETA\.yml$
+^nytprof
+^MYMETA\.
 
 : block manifest_skip { }
 @@ lib/<: $dist.path :>.pm

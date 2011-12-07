@@ -135,14 +135,20 @@ sub get_meta {
     my($self) = @_;
     my $cwd  = Cwd::getcwd();
     my $dir  = $cwd;
-    while(1) {
-        if(-e "$dir/.dim.pl") {
-            $self->info("Readng '$dir/.dim.pl'\n");
-            my $data = do "$dir/.dim.pl";
-            if($data) {
-                return $data;
+    DIR: while(1) {
+        # read .dim.pl first for back compat
+        foreach my $file(".dim.pl", $self->config->distconfig_file) {
+            if(-e "$dir/$file") {
+                $self->info("Readng '$dir/$file'\n");
+                my $data = do "$dir/$file";
+                if($data) {
+                    return $data;
+                }
+                if($@) {
+                    $self->diag($@);
+                }
+                last DIR; # file found but failed
             }
-            last;
         }
 
         my $d = File::Basename::dirname($dir); # updir
