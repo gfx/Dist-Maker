@@ -35,6 +35,7 @@ has data => (
                 name  => '<<YOUR NAME HERE>>',
                 email => '<<YOUR EMAIL ADDRESS HERE>>',
             },
+            namespace => [],
         };
         $config->merge_data($data, $config->user_data);
         return $data;
