@@ -1,5 +1,9 @@
 Revision history for Perl extension Dist::Maker
 
+0.06 2012-11-26 14:56:12
+    - Fix a problem that 'template.default' of user_config was ignored
+      (Songmu)
+
 0.05 2011-10-05 10:21:06
     - Add inc/ to default .gitignore
     - Requires Module::Install::XSUtil 0.41 in XS flavor

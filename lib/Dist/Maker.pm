@@ -3,7 +3,7 @@ use 5.10.0;
 use strict;
 use warnings;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use Dist::Maker::Config;
 use Dist::Maker::Util qw(parse_options);
@@ -51,7 +51,7 @@ Dist::Maker - Yet another distribution maker
 
 =head1 VERSION
 
-This document describes Dist::Maker version 0.05.
+This document describes Dist::Maker version 0.06.
 
 =head1 SYNOPSIS
 
