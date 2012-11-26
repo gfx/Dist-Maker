@@ -27,9 +27,9 @@ sub run {
         return undef;
     }
 
-    $template //= 'Default';
-
     my $config_data = $self->config_data;
+    $template //= $config_data->{template}{default} // 'Default';
+
     $self->note("running with $distname $template ...\n");
 
     $options->{'no-dist-init'} //= !$config_data->{template}{dist_init};
