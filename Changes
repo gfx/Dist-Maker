@@ -1,5 +1,8 @@
 Revision history for Perl extension Dist::Maker
 
+0.07 2013-02-14 23:07:39
+    - Add DefaultMB template (Songmu)
+
 0.06 2012-11-26 14:56:12
     - Fix a problem that 'template.default' of user_config was ignored
       (Songmu)
