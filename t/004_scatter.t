@@ -18,10 +18,10 @@ my $config = Dist::Maker::Config->new(
     },
 );
 
+my @installers = qw(Makefile.PL Build.PL);
+
 my @files = qw(
-    Makefile.PL
     lib/Foo/Bar.pm
-    README
     Changes
     author/requires.cpanm
     .gitignore
@@ -56,7 +56,17 @@ foreach my $template(available_templates()) {
     my $map = $x->content_map();
     ok $map, 'content_map';
 
-    foreach my $file(@files) {
+    my @exists_installers;
+    foreach my $file(@installers) {
+        push @exists_installers, $file if exists $map->{$file} && length($map->{$file}) > 0;
+    }
+    ok @exists_installers, "Installer @{[join ', ', @exists_installers]} exists correctly.";
+
+    my @files_needed = @files;
+    my $is_readme_needed = !('Build.PL' ~~ @exists_installers && $map->{'Build.PL'} =~ /create_readme/);
+    push @files_needed, 'README' if $is_readme_needed;
+
+    foreach my $file(@files_needed) {
         if(!$shouldnt_exist{$template}{$file}) {
             ok exists $map->{$file}, "$file built successfully";
             cmp_ok length($map->{$file}), '>', 0, '... with some contents';
@@ -66,11 +76,13 @@ foreach my $template(available_templates()) {
         }
     }
 
-    like $map->{README}, qr/Foo::Bar/;
-    like $map->{README}, qr/\b foo \b/xms,
-        'README must include $user.name';
+    if ($is_readme_needed) {
+        like $map->{README}, qr/Foo::Bar/;
+        like $map->{README}, qr/\b foo \b/xms,
+            'README must include $user.name';
 
-    like $map->{README}, qr/ [^\n] \n \z/xms, 'ends with a newline';
+        like $map->{README}, qr/ [^\n] \n \z/xms, 'ends with a newline';
+    }
 
     like $map->{'lib/Foo/Bar.pm'}, qr/\b foo \b/xms,
         'main module must include $user.name';
@@ -82,7 +94,7 @@ foreach my $template(available_templates()) {
     rmtree $d, { verbose => 0 } if -e $d;
     $x->scatter($d);
 
-    foreach my $file(@files) {
+    foreach my $file(@files_needed, @exists_installers) {
         next if $shouldnt_exist{$template}{$file};
 
         ok -e File::Spec->catfile($d, $file),
