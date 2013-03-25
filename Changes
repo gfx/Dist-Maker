@@ -1,5 +1,8 @@
 Revision history for Perl extension Dist::Maker
 
+0.08 2013-03-25 14:42:00
+    - Fix a miss-spelling s/extention/extension/
+
 0.07 2013-02-14 23:07:39
     - Add DefaultMB template (Songmu)
 
