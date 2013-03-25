@@ -135,7 +135,7 @@ __END__
 
 <: :>=head1 NAME
 
-<: $dist.module :> - Perl extention to do something
+<: $dist.module :> - Perl extension to do something
 
 =head1 VERSION
 
@@ -260,7 +260,6 @@ committer
 committers
 compat
 cpan
-extention
 datetimes
 dec
 definedness
