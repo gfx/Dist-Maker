@@ -37,8 +37,7 @@ has data => (
             },
             namespace => [],
         };
-        $config->merge_data($data, $config->user_data);
-        return $data;
+        return $config->merge_data($data, $config->user_data);
     },
 );
 
