@@ -1,5 +1,8 @@
 Revision history for Perl extension Dist::Maker
 
+0.09 2013-07-06 12:20:22-0700
+    - Allow user-defined configuration (@shiba_yu36)
+
 0.08 2013-03-25 14:42:00
     - Fix a miss-spelling s/extention/extension/
 
